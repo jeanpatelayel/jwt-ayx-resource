@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息索引 · 爱游戏整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 24px 16px;
+        }
+
+        .page-wrap {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        /* ---------- 顶部导航 ---------- */
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 14px 28px;
+            margin-bottom: 32px;
+            border: 1px solid #e9edf2;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: .5px;
+            color: #0f172a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 0.95rem;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color .2s, color .2s;
+        }
+
+        .nav-links a:hover {
+            color: #1e293b;
+            border-bottom-color: #94a3b8;
+        }
+
+        /* ---------- hero ---------- */
+        .hero {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 40px 32px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2e7ed;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: -.3px;
+            color: #0b1a2e;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #334155;
+            font-size: 1rem;
+            margin-bottom: 24px;
+        }
+
+        .hero .note {
+            background: #f8fafc;
+            border-left: 4px solid #cbd5e1;
+            padding: 16px 20px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-top: 10px;
+        }
+
+        .hero .note a {
+            color: #1e293b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #94a3b8;
+            font-weight: 500;
+        }
+
+        /* ---------- 卡片网格 ---------- */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 40px 0 20px 0;
+            color: #0f172a;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px 20px 28px;
+            border: 1px solid #e4e9f0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: box-shadow .2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h3 {
+            font-weight: 500;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        .card p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            background: #f1f5f9;
+            padding: 3px 12px;
+            border-radius: 20px;
+            color: #334155;
+        }
+
+        /* ---------- 常见说明 (FAQ摘要) ---------- */
+        .faq-wrap {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e7ed;
+            padding: 28px 28px 20px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .faq-wrap h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .faq-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #ecf1f7;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 4px;
+        }
+
+        .faq-a {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #1e293b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #b9c7da;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 780px) {
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nav-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+
+            .nav-links {
+                gap: 18px;
+            }
+
+            .hero {
+                padding: 28px 20px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-wrap {
+                padding: 20px 18px;
+            }
+        }
+
+        /* ---------- 页脚 ---------- */
+        .footer-note {
+            text-align: center;
+            padding: 22px 0 10px;
+            font-size: 0.85rem;
+            color: #6b7a8f;
+            border-top: 1px solid #dee4eb;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 导航 -->
+    <nav class="nav-bar">
+        <span class="nav-brand">📋 资料索引</span>
+        <div class="nav-links">
+            <a href="#intro">整理</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- hero / 核心介绍 -->
+    <section class="hero" id="intro">
+        <h1>围绕「爱游戏」的信息整理</h1>
+        <p>
+            这个页面是一份轻量的资料索引，从内容分类和常见问题的角度收集关于
+            <a href="https://jwt-ayx.com.cn">爱游戏</a> 的实用信息。
+            没有夸张的包装，只有平实的条目梳理，便于快速了解相关模块。
+        </p>
+        <div class="note">
+            💡 如果你正在找一份清晰的信息提纲，下面的三个场景卡片和常见说明可以当作起点。
+        </div>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <h2 class="section-title" id="scenes">⸻ 场景模块 · 三个方向</h2>
+    <div class="grid-3">
+        <div class="card">
+            <h3>📌 资料分类</h3>
+            <p>将平台上的内容按照主题、类型和更新频率做基础分组，方便快速定位自己感兴趣的部分，减少信息过载。</p>
+            <span class="tag">索引思维</span>
+        </div>
+        <div class="card">
+            <h3>📌 使用参考</h3>
+            <p>整理常见操作路径和功能区域，比如如何查找内容、阅读说明、了解规则，为初次接触的人提供轻量指引。</p>
+            <span class="tag">操作备忘</span>
+        </div>
+        <div class="card">
+            <h3>📌 常见关联</h3>
+            <p>梳理一些经常被一起提到的关键词或主题，帮助理解不同信息之间的关联，提升浏览时的整体感。</p>
+            <span class="tag">关联梳理</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-wrap" id="faq">
+        <h2>📖 常见说明 · 摘要</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">▸ 爱游戏 是一个什么样的站点？</div>
+            <div class="faq-a">它提供与游戏相关的信息聚合与内容索引，用户可以在 <a href="https://jwt-ayx.com.cn">爱游戏</a> 上浏览整理后的资料和分类内容。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">▸ 页面上提到的“场景模块”具体指什么？</div>
+            <div class="faq-a">这是三个信息组织维度：资料分类（按主题分组）、使用参考（操作路径）、关联梳理（主题间关系），不包含主观推荐。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">▸ 信息的准确性和时效性如何？</div>
+            <div class="faq-a">本页仅提供索引和框架性描述，具体内容请以 <a href="https://jwt-ayx.com.cn">爱游戏</a> 站内实际展示为准。建议直接浏览以获得最新信息。</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">▸ 是否有其他辅助阅读的材料？</div>
+            <div class="faq-a">目前本页为独立整理页面，没有额外手册。你可以利用站点自身的分类和搜索功能进一步探索。</div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        整理页 · 信息索引 · 基于公开内容
+    </div>
+</div>
+</body>
+</html>
